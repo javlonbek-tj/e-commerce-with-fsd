@@ -1,4 +1,6 @@
 :root {
+  --container-max-width: 144rem;
+  --container-padding: 1.2rem;
   --font-family-main: 'Roboto', sans-serif;
   --font-size-xl: 3.2rem;
   --font-line-xl: 4rem;
@@ -19,8 +21,10 @@
   --font-size-xs: 1.2rem;
   --font-line-xs: 1.8rem;
   --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+
   --white: #fff;
   --black: #000;
+
   --gray-50: #f8f7f8;
   --gray-100: #f0ecf0;
   --gray-200: #ddd;
@@ -30,10 +34,19 @@
   --gray-600: #686069;
   --gray-700: #494349;
   --gray-800: #3e3b3f;
+
   --green-50: #f5fbf5;
   --green-500: #117e11;
+
   --red-50: #f9e9e9;
   --red-500: #b81e1e;
+
   --yellow-50: #f8f8e9;
   --yellow-500: #8b8b23;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

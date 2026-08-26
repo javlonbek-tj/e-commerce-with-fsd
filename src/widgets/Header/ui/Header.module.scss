@@ -3,12 +3,12 @@
 }
 
 .header__container {
-  max-width: 140rem;
+  max-width: var(--container-max-width);
   display: flex;
   align-items: center;
   gap: 1.2rem;
   margin: 0 auto;
-  padding: 1.2rem;
+  padding: 0.8rem var(--container-padding);
 }
 
 .header__left {

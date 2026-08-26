@@ -1,3 +1,7 @@
 {
-  "hello": "привет"
+  "header": {
+    "searchPlaceholder": "Поиск по",
+    "cart": "Корзина",
+    "login": "Войти"
+  }
 }
