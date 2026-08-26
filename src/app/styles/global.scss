@@ -1,0 +1,39 @@
+:root {
+  --font-family-main: 'Roboto', sans-serif;
+  --font-size-xl: 3.2rem;
+  --font-line-xl: 4rem;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+  --font-size-l: 2.4rem;
+  --font-line-l: 3.2rem;
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+  --font-size-base: 1.8rem;
+  --font-line-base: 2.6rem;
+  --font-base: var(--font-size-base) / var(--font-line-base)
+    var(--font-family-main);
+  --font-size-m: 1.6rem;
+  --font-line-m: 2.4rem;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+  --font-size-s: 1.4rem;
+  --font-line-s: 2rem;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+  --font-size-xs: 1.2rem;
+  --font-line-xs: 1.8rem;
+  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+  --white: #fff;
+  --black: #000;
+  --gray-50: #f8f7f8;
+  --gray-100: #f0ecf0;
+  --gray-200: #ddd;
+  --gray-300: #bfbfc8;
+  --gray-400: #9c939d;
+  --gray-500: #807681;
+  --gray-600: #686069;
+  --gray-700: #494349;
+  --gray-800: #3e3b3f;
+  --green-50: #f5fbf5;
+  --green-500: #117e11;
+  --red-50: #f9e9e9;
+  --red-500: #b81e1e;
+  --yellow-50: #f8f8e9;
+  --yellow-500: #8b8b23;
+}

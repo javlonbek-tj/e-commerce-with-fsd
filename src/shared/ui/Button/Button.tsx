@@ -1,0 +1,52 @@
+import { cn } from '@/shared/lib';
+import styles from './Button.module.scss';
+
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
+type ButtonForm = 'rounded' | 'pill' | 'circle';
+type ButtonTheme = 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost';
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  className?: string;
+  size?: ButtonSize;
+  form?: ButtonForm;
+  theme?: ButtonTheme;
+  disabled?: boolean;
+  fullWidth?: boolean;
+  isLoading?: boolean;
+}
+
+export const Button = (props: ButtonProps) => {
+  const {
+    children,
+    className,
+    size = 'sm',
+    theme = 'primary',
+    form = 'pill',
+    disabled = false,
+    fullWidth = false,
+    isLoading = false,
+    ...rest
+  } = props;
+
+  return (
+    <button
+      {...rest}
+      disabled={disabled}
+      className={cn(
+        styles.button,
+        className,
+        styles[size],
+        styles[theme],
+        styles[form],
+        {
+          [styles.disabled]: disabled,
+          [styles.fullWidth]: fullWidth,
+          [styles.isLoading]: isLoading,
+        },
+      )}
+    >
+      {children}
+    </button>
+  );
+};

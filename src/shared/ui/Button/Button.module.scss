@@ -1,0 +1,165 @@
+.button {
+  width: max-content;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border: none;
+  border-radius: 0.8rem;
+  transition: all 0.2s linear;
+  color: var(--black);
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+.primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+
+  svg {
+    fill: var(--white);
+  }
+
+  &:hover {
+    background: var(--primary-color-dark);
+  }
+}
+
+.secondary {
+  background-color: var(--primary-color-light);
+  border: 1px solid var(--primary-color-light);
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+}
+
+.tertiary {
+  background-color: var(--white);
+  border: 1px solid var(--gray-100);
+
+  &:hover {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+  }
+}
+
+.outline {
+  background-color: var(--white);
+  border: 1px solid var(--primary-color);
+
+  &:hover {
+    background-color: var(--primary-color-light);
+    border-color: var(--primary-color-dark);
+  }
+
+  &.disabled {
+    border-color: var(--gray-200);
+  }
+}
+
+.disabled {
+  color: var(--gray-400);
+  background-color: var(--gray-200);
+  pointer-events: none;
+
+  svg {
+    fill: var(--gray-400);
+  }
+}
+
+.pill {
+  border-radius: 4rem;
+}
+
+.circle {
+  border-radius: 100%;
+  flex-shrink: 0;
+}
+
+.xs {
+  padding: 0.8rem 1.6rem;
+  font: var(--font-xs);
+
+  svg {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+
+  &.circle {
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0;
+  }
+}
+
+.sm {
+  padding: 1rem 2rem;
+  font: var(--font-s);
+
+  svg {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+
+  &.circle {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+  }
+}
+
+.md {
+  padding: 1.2rem 2.4rem;
+  font: var(--font-m);
+
+  svg {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &.circle {
+    width: 4.4rem;
+    height: 4.4rem;
+    padding: 0;
+  }
+}
+
+.lg {
+  padding: 1.6rem 3.2rem;
+  font: var(--font-base);
+
+  svg {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  &.circle {
+    width: 5.6rem;
+    height: 5.6rem;
+    padding: 0;
+  }
+}
+
+.xs,
+.sm,
+.md,
+.lg {
+  font-weight: 600;
+}
+
+.ghost {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-weight: 500;
+}
+
+.fullWidth {
+  width: 100%;
+}

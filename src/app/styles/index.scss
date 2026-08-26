@@ -1,0 +1,15 @@
+@use 'themes/blue';
+@use 'themes/pink';
+@use 'global';
+@use 'reset';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font: var(--font-m);
+  min-height: 100vh;
+  background: var(--white);
+  color: var(--black);
+}
