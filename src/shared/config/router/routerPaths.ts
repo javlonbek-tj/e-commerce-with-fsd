@@ -1,5 +1,5 @@
 export const AppRoutes = {
   HOME: '/',
   LOGIN: '/login',
-  NOT_FOUND: '/not-found',
+  NOT_FOUND: '*',
 } as const;
