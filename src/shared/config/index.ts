@@ -8,6 +8,7 @@ import {
 import { useTheme } from './theme/useTheme';
 import { supportedLngs } from './i18n/i18n';
 import { languageIconList } from './i18n/LanguageIconList';
+import { AuthProviders, type AuthProvidersType } from './auth/auth';
 
 export {
   AppRoutes,
@@ -17,5 +18,7 @@ export {
   useTheme,
   supportedLngs,
   languageIconList,
+  AuthProviders,
+  type AuthProvidersType,
   type ThemeType,
 };
