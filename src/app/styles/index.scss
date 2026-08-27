@@ -2,6 +2,7 @@
 @use 'themes/pink';
 @use 'global';
 @use 'reset';
+@use '@/shared/styles/container';
 
 html {
   font-size: 62.5%;

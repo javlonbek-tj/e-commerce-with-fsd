@@ -3,5 +3,13 @@
     "searchPlaceholder": "Search by",
     "cart": "Cart",
     "login": "Login"
+  },
+  "pageLoader": {
+    "loading": "Loading..."
+  },
+  "pageError": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try reloading the page.",
+    "reload": "Reload"
   }
 }

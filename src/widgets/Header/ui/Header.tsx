@@ -22,10 +22,10 @@ export const Header = () => {
   };
   return (
     <header className={styles.header}>
-      <div className={styles.header__container}>
-        <div className={styles.header__left}>
-          <LogoIcon className={styles.header__logo} />
-          <Button className={styles.header__address} theme='ghost'>
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.left}>
+          <LogoIcon className={styles.logo} />
+          <Button className={styles.address} theme='ghost'>
             <AppIcon Icon={MapPinIcon} />
             <span>10115 New York</span>
           </Button>
@@ -35,14 +35,14 @@ export const Header = () => {
           placeholder={t('header.searchPlaceholder')}
           rounded
           Icon={<AppIcon Icon={SearchIcon} size={18} theme='background' />}
-          className={styles.header__search}
+          className={styles.search}
         />
 
-        <div className={styles.header__right}>
-          <Button className={styles.header__cart} theme='tertiary' size='xs'>
-            <div className={styles['header__cart-icon']}>
+        <div className={styles.right}>
+          <Button className={styles.cart} theme='tertiary' size='xs'>
+            <div className={styles.cartIcon}>
               <AppIcon Icon={ShoppingCartIcon} theme='background' />
-              <span className={styles['header__cart-count']}>14</span>
+              <span className={styles.cartCount}>14</span>
             </div>
             <span>{t('header.cart')}</span>
           </Button>
