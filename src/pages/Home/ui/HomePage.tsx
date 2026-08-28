@@ -1,6 +1,6 @@
 import { Header } from '@/widgets/Header';
 import styles from './HomePage.module.scss';
-import { Spinner } from '@/shared/ui';
+import { Tabs } from '@/shared/ui';
 
 const HomePage = () => {
   return (
@@ -8,7 +8,14 @@ const HomePage = () => {
       <Header />
       <main className={styles.main}>
         <div className='container'>
-          <Spinner />
+          <Tabs defaultValue='1'>
+            <Tabs.List>
+              <Tabs.Trigger value='1'>1</Tabs.Trigger>
+              <Tabs.Trigger value='2'>2</Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content value='1'>1</Tabs.Content>
+            <Tabs.Content value='2'>2</Tabs.Content>
+          </Tabs>
         </div>
       </main>
       <footer>Footer</footer>

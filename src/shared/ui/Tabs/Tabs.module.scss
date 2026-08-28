@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.content {
+  margin: 2.4rem 0 1.2rem;
+}
+
+.trigger {
+  color: var(--gray-700);
+  background-color: var(--gray-50);
+  border: 1px solid transparent;
+
+  &.active {
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+    border-color: var(--primary-color);
+
+    svg {
+      fill: var(--primary-color);
+    }
+  }
+}
