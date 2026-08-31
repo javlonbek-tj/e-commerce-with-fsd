@@ -6,14 +6,17 @@ import { selectLoginPassword } from './model/selectors/selectLoginPassword/selec
 import { selectLoginIsLoading } from './model/selectors/selectLoginIsLoading/selectLoginIsLoading';
 import { selectLoginError } from './model/selectors/selectLoginError/selectLoginError';
 import { selectLoginMethod } from './model/selectors/selectLoginMethod/selectLoginMethod';
+import { LoginForm } from './ui/LoginForm/LoginForm';
 
-export { loginActions, loginReducer };
-export type { LoginFormSchema };
 export {
+  loginActions,
+  loginReducer,
   selectLoginEmail,
   selectLoginPhone,
   selectLoginPassword,
   selectLoginIsLoading,
   selectLoginError,
   selectLoginMethod,
+  LoginForm,
 };
+export type { LoginFormSchema };

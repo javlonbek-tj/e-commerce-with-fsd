@@ -7,7 +7,7 @@ export const PageLoader = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.wrapper}>
-      <Spinner />
+      <Spinner size="lg" />
       <h3 className={styles.title}>{t('pageLoader.loading')}</h3>
     </div>
   );

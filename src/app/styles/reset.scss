@@ -27,3 +27,22 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.react-international-phone-input-container .react-international-phone-input {
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: inherit;
+  font: inherit;
+  color: var(--gray-800);
+}
+
+.react-international-phone-input-container
+  .react-international-phone-country-selector-button {
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: inherit;
+}

@@ -15,6 +15,9 @@ interface InputProps extends HTMLInputType {
   rounded?: boolean;
   Icon?: ReactNode;
   onChange?: (value: string) => void;
+  label?: string;
+  name?: string;
+  error?: boolean;
 }
 
 export const Input = (props: InputProps) => {
@@ -28,6 +31,9 @@ export const Input = (props: InputProps) => {
     rounded = false,
     disabled = false,
     type = 'text',
+    label,
+    name,
+    error = false,
     ...rest
   } = props;
 
@@ -41,37 +47,51 @@ export const Input = (props: InputProps) => {
   const handleBlur = () => setFocus(false);
 
   return (
-    <div
-      className={cn(styles.inputContainer, className, {
-        [styles.rounded]: rounded,
-        [styles.disabled]: disabled,
-        [styles.focus]: focus,
-      })}
-    >
-      {Icon}
-      <input
-        {...rest}
-        value={value}
-        disabled={disabled}
-        onChange={handleOnChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        type={showPassword && type === 'password' ? 'text' : type}
-        className={cn(styles.input, {
-          [styles.disabled]: disabled,
-        })}
-      />
-
-      {type === 'password' && (
-        <Button
-          onClick={toggleShowPassword}
-          type='button'
-          theme='ghost'
-          className={styles.toggleVisibility}
+    <div className={styles.wrapper}>
+      {label && (
+        <label
+          htmlFor={name}
+          className={cn(styles.label, { [styles.error]: error })}
         >
-          {showPassword ? <HideIcon /> : <ShowIcon />}
-        </Button>
+          {label}
+        </label>
       )}
+      <div
+        className={cn(styles.inputContainer, className, {
+          [styles.rounded]: rounded,
+          [styles.disabled]: disabled,
+          [styles.focus]: focus,
+          [styles.error]: error,
+        })}
+      >
+        {Icon}
+        <input
+          {...rest}
+          value={value}
+          disabled={disabled}
+          onChange={handleOnChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          id={name}
+          name={name}
+          type={showPassword && type === 'password' ? 'text' : type}
+          className={cn(styles.input, {
+            [styles.disabled]: disabled,
+            [styles.error]: error,
+          })}
+        />
+
+        {type === 'password' && (
+          <Button
+            onClick={toggleShowPassword}
+            type="button"
+            theme="ghost"
+            className={styles.toggleVisibility}
+          >
+            {showPassword ? <HideIcon /> : <ShowIcon />}
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

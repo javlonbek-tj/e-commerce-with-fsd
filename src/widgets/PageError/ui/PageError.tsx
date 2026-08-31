@@ -15,7 +15,7 @@ export const PageError = () => {
         <PageErrorIcon className={styles.icon} />
         <h3 className={styles.title}>{t('pageError.title')}</h3>
         <p className={styles.description}>{t('pageError.description')}</p>
-        <Button onClick={handleReload} form='rounded' className={styles.button}>
+        <Button onClick={handleReload} form="rounded" className={styles.button}>
           {t('pageError.reload')}
         </Button>
       </div>

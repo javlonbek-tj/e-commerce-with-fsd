@@ -40,7 +40,6 @@ export const loginSlice = createSlice({
       state.email = '';
       state.phone = '';
       state.password = '';
-      state.isLoading = false;
       state.error = undefined;
     },
   },

@@ -12,25 +12,26 @@ interface TabsContextType {
 interface TabsProps {
   children: ReactNode;
   defaultValue: string;
-  onChange?: () => void;
+  className?: string;
+  onChange?: (tab: string) => void;
 }
 
 const TabsContext = createContext<TabsContextType | undefined>(undefined);
 
 export const Tabs = (props: TabsProps) => {
-  const { children, defaultValue, onChange } = props;
+  const { children, defaultValue, className, onChange } = props;
   const [activeTab, setActiveTab] = useState<string>(defaultValue);
 
   const handleChangeActiveTab = (tab: string) => {
     setActiveTab(tab);
     if (onChange) {
-      onChange();
+      onChange(tab);
     }
   };
 
   return (
     <TabsContext.Provider value={{ activeTab, handleChangeActiveTab }}>
-      <div> {children}</div>
+      <div className={cn(styles.tabs, className)}> {children}</div>
     </TabsContext.Provider>
   );
 };
@@ -59,9 +60,10 @@ const TabsTrigger = ({ children, value }: TabsTriggerProps) => {
 
   return (
     <Button
-      theme='tertiary'
+      theme="tertiary"
+      type="button"
       onClick={() => context.handleChangeActiveTab(value)}
-      form='rounded'
+      form="rounded"
       className={cn(styles.trigger, { [styles.active]: isActive })}
     >
       {children}
@@ -72,9 +74,10 @@ const TabsTrigger = ({ children, value }: TabsTriggerProps) => {
 interface TabsContentProps {
   children: ReactNode;
   value: string;
+  className?: string;
 }
 
-const TabsContent = ({ children, value }: TabsContentProps) => {
+const TabsContent = ({ children, value, className }: TabsContentProps) => {
   const context = useContext(TabsContext);
 
   if (context === undefined) {
@@ -85,7 +88,7 @@ const TabsContent = ({ children, value }: TabsContentProps) => {
 
   if (!isActive) return null;
 
-  return <div className={styles.content}>{children}</div>;
+  return <div className={cn(className)}>{children}</div>;
 };
 
 Tabs.List = TabsList;

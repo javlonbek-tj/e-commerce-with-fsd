@@ -13,8 +13,8 @@ import {
   AuthProviders,
   type AuthProvidersType,
   type AuthMethodType,
-  LOCAL_STORAGE_USER_KEY,
 } from './auth/auth';
+import { API_URL } from './api/api';
 
 export {
   AppRoutes,
@@ -26,7 +26,7 @@ export {
   languageIconList,
   AuthProviders,
   AuthMethod,
-  LOCAL_STORAGE_USER_KEY,
+  API_URL,
   type AuthProvidersType,
   type ThemeType,
   type AuthMethodType,

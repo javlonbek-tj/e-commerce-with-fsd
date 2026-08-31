@@ -20,6 +20,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-i18next": "^17.0.12",
+    "react-international-phone": "^4.8.0",
     "react-redux": "^9.3.0",
     "react-router": "^8.3.0",
     "vite-plugin-svgr": "^5.2.0"

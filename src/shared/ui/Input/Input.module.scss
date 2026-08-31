@@ -1,11 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.label {
+  font: var(--font-s);
+  font-weight: 600;
+  color: var(--gray-700);
+
+  &.error {
+    color: var(--red-500);
+  }
+}
+
 .inputContainer {
-  min-width: 320px;
+  min-width: 32rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   background-color: var(--white);
   border: 1px solid var(--gray-200);
-  box-shadow: 0 2px 80px 0 rgb(0 0 0 / 4%);
+  box-shadow: 0 2px 8rem 0 rgb(0 0 0 / 4%);
   border-radius: 0.8rem;
   padding: 0.8rem 1.6rem;
   transition: all 0.2s linear;
@@ -16,6 +32,11 @@
 
   &.disabled {
     background-color: var(--gray-50);
+  }
+
+  &.error {
+    border-color: var(--red-500);
+    background-color: var(--red-50);
   }
 }
 
@@ -28,7 +49,15 @@
   border: none;
   outline: none;
   background-color: transparent;
-  color: var(--grey-800);
+  color: var(--gray-800);
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--gray-800);
+    box-shadow: 0 0 0 1000px var(--white) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 
   &::placeholder {
     color: var(--gray-400);
@@ -40,5 +69,9 @@
     &::placeholder {
       color: var(--gray-300);
     }
+  }
+
+  &.error {
+    background-color: var(--red-50);
   }
 }

@@ -1,11 +1,13 @@
 import { cn } from '@/shared/lib';
 import styles from './Button.module.scss';
+import { Spinner } from '../Spinner/Spinner';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 type ButtonForm = 'rounded' | 'pill' | 'circle';
 type ButtonTheme = 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
   size?: ButtonSize;
@@ -43,10 +45,10 @@ export const Button = (props: ButtonProps) => {
           [styles.disabled]: disabled,
           [styles.fullWidth]: fullWidth,
           [styles.isLoading]: isLoading,
-        },
+        }
       )}
     >
-      {children}
+      {isLoading && <Spinner size="sm" />} {children}
     </button>
   );
 };
