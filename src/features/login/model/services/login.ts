@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { userActions, type User } from '@/entities/user';
-import { apiClient } from '@/shared/api';
+import { apiClient, extractErrorMessage } from '@/shared/api';
 import { tokenStorage } from '@/shared/lib';
 
 interface LoginArgs {
@@ -18,10 +18,10 @@ interface LoginResponse {
 }
 
 export const login = createAsyncThunk<void, LoginArgs, { rejectValue: string }>(
-  'login/login',
-  async (authData, thunkApi) => {
+  'features/login',
+  async (payload, thunkApi) => {
     try {
-      const res = await apiClient.post<LoginResponse>('/auth/login', authData);
+      const res = await apiClient.post<LoginResponse>('/auth/login', payload);
       const {
         user,
         tokens: { accessToken },
@@ -29,8 +29,9 @@ export const login = createAsyncThunk<void, LoginArgs, { rejectValue: string }>(
 
       tokenStorage.setAccessToken(accessToken);
       thunkApi.dispatch(userActions.setUser(user));
-    } catch {
-      return thunkApi.rejectWithValue('Invalid credentials');
+    } catch (error) {
+      const message = extractErrorMessage(error);
+      return thunkApi.rejectWithValue(message);
     }
   }
 );

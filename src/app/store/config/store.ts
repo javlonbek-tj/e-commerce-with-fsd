@@ -7,6 +7,7 @@ import {
 import { type StateSchema } from './StateSchema';
 import { userReducer } from '@/entities/user';
 import { loginReducer } from '@/features/login';
+import { registerReducer } from '@/features/register';
 
 export const createStore = (initialState?: StateSchema) => {
   return configureStore<StateSchema>({
@@ -14,6 +15,7 @@ export const createStore = (initialState?: StateSchema) => {
     reducer: {
       user: userReducer,
       loginForm: loginReducer,
+      registerForm: registerReducer,
     },
   });
 };

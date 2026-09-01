@@ -28,13 +28,21 @@ const refreshState: RefreshState = {
   failedQueue: [],
 };
 
-// ATTENTION HERE: WE ARE NOT UPDATING REDUX USER STATE IF REFRESH FAILS
-// WE ARE HARD RELOADING FULL PAGE, SO REDUX STATE IS RESET
-// IF WE WOULD USE navigate('/login'), REDUX STATE WOULD NOT BE RESET AND WE WOULD GET STALE OLD USER DATA
-// IF WE WANNA USE navigate('/login'), WE SHOULD CLEAR USER DATA dispatch(userActions.clearUser());
 const handleRefreshFailure = (): void => {
   tokenStorage.clearAccessToken();
   window.location.href = '/login';
+};
+
+interface RefreshError extends Error {
+  isRefreshedError: true;
+  originalError: AxiosError;
+}
+
+const createRefreshError = (originalError: AxiosError): RefreshError => {
+  const refreshError = new Error('token refresh failed') as RefreshError;
+  refreshError.isRefreshedError = true;
+  refreshError.originalError = originalError;
+  return refreshError;
 };
 
 /**
@@ -50,6 +58,14 @@ const processQueue = (error: unknown, token: string | null = null): void => {
   });
 
   refreshState.failedQueue = [];
+};
+
+const REFRESH_TIMEOUT = 15000;
+
+const logError = (context: string, error: unknown) => {
+  if (import.meta.env.DEV) {
+    console.error(`API_CLIENT ${context}:`, error);
+  }
 };
 
 /**
@@ -109,7 +125,9 @@ apiClient.interceptors.response.use(
 
       try {
         const response = await authClient.post<RefreshEndpointResponse>(
-          '/auth/refresh'
+          '/auth/refresh',
+          {},
+          { timeout: REFRESH_TIMEOUT }
         );
 
         const {
@@ -126,9 +144,10 @@ apiClient.interceptors.response.use(
         // Retry the original request
         return apiClient(originalConfig);
       } catch (refreshError) {
+        logError('token_refresh_error', refreshError);
         handleRefreshFailure();
         processQueue(refreshError);
-        return Promise.reject(refreshError);
+        return Promise.reject(createRefreshError(axiosError));
       } finally {
         refreshState.isRefreshing = false;
       }
@@ -147,3 +166,12 @@ authClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const isRefreshError = (error: unknown): error is RefreshError => {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'isRefreshError' in error &&
+    error.isRefreshError === true
+  );
+};

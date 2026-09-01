@@ -12,6 +12,7 @@ export const apiClient: AxiosInstance = axios.create({
     'Content-Type': 'application/json',
   },
   withCredentials: true,
+  timeout: 10000,
 });
 
 /**
@@ -25,4 +26,5 @@ export const authClient: AxiosInstance = axios.create({
     'Content-Type': 'application/json',
   },
   withCredentials: true,
+  timeout: 10000,
 });
