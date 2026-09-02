@@ -60,10 +60,10 @@ const TabsTrigger = ({ children, value }: TabsTriggerProps) => {
 
   return (
     <Button
-      theme="tertiary"
-      type="button"
+      theme='tertiary'
+      type='button'
       onClick={() => context.handleChangeActiveTab(value)}
-      form="rounded"
+      form='rounded'
       className={cn(styles.trigger, { [styles.active]: isActive })}
     >
       {children}

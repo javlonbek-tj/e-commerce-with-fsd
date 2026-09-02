@@ -2,8 +2,8 @@ import type { ChangeEvent } from 'react';
 import { useNavigate } from 'react-router';
 import { AppRoutes, AuthMethod, type AuthMethodType } from '@/shared/config';
 import { AppIcon, Button, Input, PhoneInput, Tabs } from '@/shared/ui';
-import Mail from '@/shared/assets/icons/Mail.svg?react';
-import Phone from '@/shared/assets/icons/Phone.svg?react';
+import MailIcon from '@/shared/assets/icons/Mail.svg?react';
+import PhoneIcon from '@/shared/assets/icons/Phone.svg?react';
 import ArrowRight from '@/shared/assets/icons/ArrowRight.svg?react';
 
 import styles from './LoginForm.module.scss';
@@ -37,8 +37,8 @@ export const LoginForm = () => {
     dispatch(loginActions.setPassword(value));
   };
 
-  const handleMethodChange = (tab: AuthMethodType) => {
-    dispatch(loginActions.setMethod(tab));
+  const handleMethodChange = (tab: string) => {
+    dispatch(loginActions.setMethod(tab as AuthMethodType));
     dispatch(loginActions.resetForm());
   };
 
@@ -56,18 +56,18 @@ export const LoginForm = () => {
       <Tabs defaultValue={AuthMethod.EMAIL} onChange={handleMethodChange}>
         <Tabs.List>
           <Tabs.Trigger value={AuthMethod.EMAIL}>
-            <AppIcon Icon={Mail} />
+            <AppIcon Icon={MailIcon} />
             {AuthMethod.EMAIL}
           </Tabs.Trigger>
           <Tabs.Trigger value={AuthMethod.PHONE}>
-            <AppIcon Icon={Phone} />
+            <AppIcon Icon={PhoneIcon} />
             {AuthMethod.PHONE}
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value={AuthMethod.EMAIL}>
           <Input
-            name="email"
-            label="Email"
+            name='email'
+            label='Email'
             value={email}
             error={!!error}
             onChange={handleEmailChange}
@@ -75,19 +75,19 @@ export const LoginForm = () => {
         </Tabs.Content>
         <Tabs.Content value={AuthMethod.PHONE}>
           <PhoneInput
-            name="phone"
+            name='phone'
             value={phone}
             onChange={handlePhoneChange}
             error={!!error}
-            label="Phone"
+            label='Phone'
           />
         </Tabs.Content>
       </Tabs>
       <div>
         <Input
-          type="password"
-          name="password"
-          label="Password"
+          type='password'
+          name='password'
+          label='Password'
           value={password}
           error={!!error}
           onChange={handlePasswordChange}

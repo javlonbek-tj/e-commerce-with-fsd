@@ -31,27 +31,32 @@ const extractErrorCode = (error: unknown) => {
   return undefined;
 };
 
-export const extractErrorMessage = (error: unknown) => {
+export const extractErrorMessage = (error: unknown): string => {
   const code = extractErrorCode(error);
   if (code) {
-    const translated = i18n.t(`errors.${code}`);
-    if (translated && translated !== `errors.${code}`) return translated;
+    const translationKey = `errors.${code}`;
+    const translated = i18n.t(translationKey);
+
+    if (translated !== translationKey) {
+      return translated;
+    }
   }
 
   if (isAxiosError(error)) {
     const responseData = error.response?.data;
-    if (isApiErrorData(responseData)) {
+
+    if (isApiErrorData(responseData) && responseData.message) {
       return responseData.message;
     }
 
     if (error.message) {
       return error.message;
     }
-
-    if (error instanceof Error && error.message) {
-      return error.message;
-    }
-
-    return i18n.t('errors.unknown');
   }
+
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+
+  return i18n.t('errors.unknown');
 };
