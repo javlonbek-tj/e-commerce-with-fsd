@@ -55,8 +55,8 @@ export const CredentialsStep = () => {
           </Tabs.List>
           <Tabs.Content value={AuthMethod.EMAIL}>
             <Input
-              name='email'
-              label='Email'
+              name="email"
+              label="Email"
               value={email}
               error={!!error}
               onChange={handleEmailChange}
@@ -64,11 +64,11 @@ export const CredentialsStep = () => {
           </Tabs.Content>
           <Tabs.Content value={AuthMethod.PHONE}>
             <PhoneInput
-              name='phone'
+              name="phone"
               value={phone}
               onChange={handlePhoneChange}
               error={!!error}
-              label='Phone'
+              label="Phone"
             />
           </Tabs.Content>
         </Tabs>
