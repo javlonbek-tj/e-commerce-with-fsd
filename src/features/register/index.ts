@@ -8,6 +8,10 @@ import { selectRegisterError } from './model/selectors/selectRegisterError/selec
 import { selectRegisterMethod } from './model/selectors/selectRegisterMethod/selectRegisterMethod';
 import { selectRegisterStep } from './model/selectors/selectRegisterStep/selectRegisterStep';
 import { RegisterForm } from './ui/RegisterForm/RegisterForm';
+import {
+  FormSteps,
+  type FormStepsType,
+} from './model/types/RegisterFormSchema';
 
 export {
   registerActions,
@@ -20,5 +24,6 @@ export {
   selectRegisterMethod,
   selectRegisterStep,
   RegisterForm,
+  FormSteps,
 };
-export type { RegisterFormSchema };
+export type { RegisterFormSchema, FormStepsType };

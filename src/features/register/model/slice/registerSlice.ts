@@ -9,6 +9,8 @@ import {
   type RegisterFormSchema,
 } from '../types/RegisterFormSchema';
 import { register } from '../services/register';
+import { verifyCode } from '../services/verifyCode';
+import { resendCode } from '../services/resendCode';
 
 const initialState: RegisterFormSchema = {
   email: '',
@@ -62,6 +64,26 @@ export const registerSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(register.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(verifyCode.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(verifyCode.fulfilled, (state) => {
+      state.isLoading = false;
+    });
+    builder.addCase(verifyCode.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(resendCode.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(resendCode.fulfilled, (state) => {
+      state.isLoading = false;
+    });
+    builder.addCase(resendCode.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

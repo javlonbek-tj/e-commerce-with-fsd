@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  background-color: var(--surface-color);
+  border-radius: 1.2rem;
+  padding: 3rem 4.8rem;
+}
+
+.title {
+  color: var(--gray-600);
+  font-weight: 600;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  font: var(--font-s);
+  color: var(--red-500);
+  font-weight: 600;
+  text-align: center;
+}
+
+.resendCodeText {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font: var(--font-sm);
+  font-weight: 600;
+
+  & span {
+    color: var(--gray-700);
+  }
+}
+
+.resendButton {
+  color: var(--primary-color);
+}

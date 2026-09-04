@@ -5,3 +5,53 @@
   justify-content: center;
   align-items: center;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.title {
+  font: var(--font-xl);
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  & .dividerText {
+    color: var(--gray-400);
+  }
+
+  & .line {
+    flex: 1;
+    height: 0.1rem;
+    background-color: var(--gray-200);
+    width: 10rem;
+  }
+}
+
+.authServices {
+  color: var(--gray-600);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: -0.8rem;
+
+  & p {
+    color: var(--gray-700);
+  }
+
+  & .link {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+}

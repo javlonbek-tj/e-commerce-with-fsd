@@ -34,52 +34,49 @@ export const CredentialsStep = () => {
     dispatch(registerActions.resetForm());
   };
 
-  const handleNextStep = () => {
+  const handleSubmit = () => {
     dispatch(registerActions.setStep(FormSteps.PASSWORD));
   };
 
   return (
-    <div className={styles.wrapper}>
-      <h2 className={styles.title}>Sign up</h2>
-      <form className={styles.form} onSubmit={handleNextStep}>
-        <Tabs defaultValue={AuthMethod.EMAIL} onChange={handleMethodChange}>
-          <Tabs.List>
-            <Tabs.Trigger value={AuthMethod.EMAIL}>
-              <AppIcon Icon={MailIcon} />
-              {AuthMethod.EMAIL}
-            </Tabs.Trigger>
-            <Tabs.Trigger value={AuthMethod.PHONE}>
-              <AppIcon Icon={PhoneIcon} />
-              {AuthMethod.PHONE}
-            </Tabs.Trigger>
-          </Tabs.List>
-          <Tabs.Content value={AuthMethod.EMAIL}>
-            <Input
-              name="email"
-              label="Email"
-              value={email}
-              error={!!error}
-              onChange={handleEmailChange}
-            />
-          </Tabs.Content>
-          <Tabs.Content value={AuthMethod.PHONE}>
-            <PhoneInput
-              name="phone"
-              value={phone}
-              onChange={handlePhoneChange}
-              error={!!error}
-              label="Phone"
-            />
-          </Tabs.Content>
-        </Tabs>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <Tabs defaultValue={AuthMethod.EMAIL} onChange={handleMethodChange}>
+        <Tabs.List>
+          <Tabs.Trigger value={AuthMethod.EMAIL}>
+            <AppIcon Icon={MailIcon} />
+            {AuthMethod.EMAIL}
+          </Tabs.Trigger>
+          <Tabs.Trigger value={AuthMethod.PHONE}>
+            <AppIcon Icon={PhoneIcon} />
+            {AuthMethod.PHONE}
+          </Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value={AuthMethod.EMAIL}>
+          <Input
+            name='email'
+            label='Email'
+            value={email}
+            error={!!error}
+            onChange={handleEmailChange}
+          />
+        </Tabs.Content>
+        <Tabs.Content value={AuthMethod.PHONE}>
+          <PhoneInput
+            name='phone'
+            value={phone}
+            onChange={handlePhoneChange}
+            error={!!error}
+            label='Phone'
+          />
+        </Tabs.Content>
+      </Tabs>
 
-        {!!error && <div className={styles.error}>{error}</div>}
+      {!!error && <div className={styles.error}>{error}</div>}
 
-        <Button fullWidth className={styles.button} isLoading={isLoading}>
-          Continue
-          <AppIcon Icon={ArrowRight} />
-        </Button>
-      </form>
-    </div>
+      <Button fullWidth className={styles.button} isLoading={isLoading}>
+        Continue
+        <AppIcon Icon={ArrowRight} />
+      </Button>
+    </form>
   );
 };

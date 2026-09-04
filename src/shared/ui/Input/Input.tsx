@@ -1,4 +1,9 @@
-import { useState, type InputHTMLAttributes, type ReactNode } from 'react';
+import {
+  useState,
+  type InputHTMLAttributes,
+  type ReactNode,
+  type Ref,
+} from 'react';
 
 import { cn } from '@/shared/lib';
 import HideIcon from '@/shared/assets/icons/Hide.svg?react';
@@ -6,14 +11,18 @@ import ShowIcon from '@/shared/assets/icons/Show.svg?react';
 import { Button } from '../Button/Button';
 import styles from './Input.module.scss';
 
-type HTMLInputType = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
+export type HTMLInputProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'onChange'
+>;
 
-interface InputProps extends HTMLInputType {
+export interface InputProps extends HTMLInputProps {
   className?: string;
   value?: string;
   disabled?: boolean;
   rounded?: boolean;
   Icon?: ReactNode;
+  ref?: Ref<HTMLInputElement>;
   onChange?: (value: string) => void;
   label?: string;
   name?: string;
@@ -27,6 +36,7 @@ export const Input = (props: InputProps) => {
     className,
     value,
     Icon,
+    ref,
     onChange,
     rounded = false,
     disabled = false,
@@ -67,6 +77,7 @@ export const Input = (props: InputProps) => {
         {Icon}
         <input
           {...rest}
+          ref={ref}
           value={value}
           disabled={disabled}
           onChange={handleOnChange}
@@ -84,8 +95,8 @@ export const Input = (props: InputProps) => {
         {type === 'password' && (
           <Button
             onClick={toggleShowPassword}
-            type="button"
-            theme="ghost"
+            type='button'
+            theme='ghost'
             className={styles.toggleVisibility}
           >
             {showPassword ? <HideIcon /> : <ShowIcon />}
