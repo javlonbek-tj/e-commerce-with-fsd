@@ -34,13 +34,13 @@ const handleRefreshFailure = (): void => {
 };
 
 interface RefreshError extends Error {
-  isRefreshedError: true;
+  isRefreshError: true;
   originalError: AxiosError;
 }
 
 const createRefreshError = (originalError: AxiosError): RefreshError => {
   const refreshError = new Error('token refresh failed') as RefreshError;
-  refreshError.isRefreshedError = true;
+  refreshError.isRefreshError = true;
   refreshError.originalError = originalError;
   return refreshError;
 };
@@ -86,7 +86,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response Interceptor: Handle 401 and refresh flow
@@ -127,7 +127,7 @@ apiClient.interceptors.response.use(
         const response = await authClient.post<RefreshEndpointResponse>(
           '/auth/refresh',
           {},
-          { timeout: REFRESH_TIMEOUT }
+          { timeout: REFRESH_TIMEOUT },
         );
 
         const {
@@ -154,7 +154,7 @@ apiClient.interceptors.response.use(
     }
 
     return Promise.reject(axiosError);
-  }
+  },
 );
 
 authClient.interceptors.response.use(
@@ -164,7 +164,7 @@ authClient.interceptors.response.use(
       tokenStorage.clearAccessToken();
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export const isRefreshError = (error: unknown): error is RefreshError => {
