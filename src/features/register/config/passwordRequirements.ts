@@ -5,21 +5,21 @@ interface PasswordRequirements {
 
 export const passwordRequirements: PasswordRequirements[] = [
   {
-    key: 'Minimal length',
+    key: 'register.password.requirements.minLength',
     test: (password: string) => password.length >= 8,
   },
 
   {
-    key: 'Contains at least 1 uppercase symbol',
+    key: 'register.password.requirements.uppercase',
     test: (password: string) => /[A-Z]/.test(password),
   },
 
   {
-    key: 'Contains at least 1 lowercase symbol',
+    key: 'register.password.requirements.lowercase',
     test: (password: string) => /[a-z]/.test(password),
   },
   {
-    key: 'Contains at least 1 number',
+    key: 'register.password.requirements.number',
     test: (password: string) => /\d/.test(password),
   },
 ];

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styles from './CredentialsStep.module.scss';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { AuthMethod, type AuthMethodType } from '@/shared/config';
@@ -15,6 +16,7 @@ import {
 import { FormSteps } from '@/features/register/model/types/RegisterFormSchema';
 
 export const CredentialsStep = () => {
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
   const email = useAppSelector(selectRegisterEmail);
   const phone = useAppSelector(selectRegisterPhone);
@@ -44,20 +46,21 @@ export const CredentialsStep = () => {
         <Tabs.List>
           <Tabs.Trigger value={AuthMethod.EMAIL}>
             <AppIcon Icon={MailIcon} />
-            {AuthMethod.EMAIL}
+            {t('register.credentials.email')}
           </Tabs.Trigger>
           <Tabs.Trigger value={AuthMethod.PHONE}>
             <AppIcon Icon={PhoneIcon} />
-            {AuthMethod.PHONE}
+            {t('register.credentials.phone')}
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value={AuthMethod.EMAIL}>
           <Input
             name='email'
-            label='Email'
+            label={t('register.credentials.email')}
             value={email}
             error={!!error}
             onChange={handleEmailChange}
+            placeholder={t('register.credentials.enterEmail')}
           />
         </Tabs.Content>
         <Tabs.Content value={AuthMethod.PHONE}>
@@ -66,7 +69,7 @@ export const CredentialsStep = () => {
             value={phone}
             onChange={handlePhoneChange}
             error={!!error}
-            label='Phone'
+            label={t('register.credentials.phone')}
           />
         </Tabs.Content>
       </Tabs>
@@ -74,7 +77,7 @@ export const CredentialsStep = () => {
       {!!error && <div className={styles.error}>{error}</div>}
 
       <Button fullWidth className={styles.button} isLoading={isLoading}>
-        Continue
+        {t('register.continueButton')}
         <AppIcon Icon={ArrowRight} />
       </Button>
     </form>

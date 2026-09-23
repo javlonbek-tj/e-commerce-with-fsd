@@ -1,3 +1,5 @@
+import { useState, type ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './PasswordCreateStep.module.scss';
 import { cn, useAppDispatch, useAppSelector } from '@/shared/lib';
 import { AppIcon, Input, Button } from '@/shared/ui';
@@ -12,11 +14,11 @@ import {
   selectRegisterPhone,
 } from '@/features/register';
 import { FormSteps } from '@/features/register/model/types/RegisterFormSchema';
-import { useState, type ChangeEvent } from 'react';
 import { passwordRequirements } from '@/features/register/config/passwordRequirements';
 import { register } from '@/features/register/model/services/register';
 
 export const PasswordCreateStep = () => {
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectRegisterIsLoading);
   const password = useAppSelector(selectRegisterPassword);
@@ -53,8 +55,8 @@ export const PasswordCreateStep = () => {
       <Input
         disabled={isLoading}
         type='password'
-        label='Create a password'
-        placeholder='Enter your password'
+        label={t('register.password.title')}
+        placeholder={t('register.password.enterPassword')}
         onChange={handleChangePassword}
         value={password}
       />
@@ -71,7 +73,9 @@ export const PasswordCreateStep = () => {
                   [styles.met]: isMet,
                 })}
               />
-              <span className={styles.requiremetnText}>{requirement.key}</span>
+              <span className={styles.requiremetnText}>
+                {t(requirement.key)}
+              </span>
             </div>
           );
         })}
@@ -84,7 +88,7 @@ export const PasswordCreateStep = () => {
         isLoading={isLoading}
         disabled={validationError}
       >
-        Continue
+        {t('register.continueButton')}
         <AppIcon Icon={ArrowRight} />
       </Button>
     </form>

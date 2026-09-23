@@ -1,0 +1,12 @@
+.button {
+  .googleIcon {
+    fill: var(--primary-color);
+  }
+
+  &:hover {
+    .googleIcon {
+      fill: var(--white);
+      transition: all 0.2s linear;
+    }
+  }
+}

@@ -7,12 +7,12 @@ import {
   type FormStepsType,
 } from '@/features/register';
 import ArrowLeftIcon from '@/shared/assets/icons/ArrowLeft.svg?react';
-import GoogleIcon from '@/shared/assets/icons//Google.svg?react';
 
 import styles from './RegisterPage.module.scss';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { AppIcon, Button } from '@/shared/ui';
 import { AppRoutes } from '@/shared/config';
+import { AuthByGoogleButton } from '@/features/authByGoogle';
 
 const STEP_TITLES: Record<FormStepsType, string> = {
   [FormSteps.CREDENTIALS]: 'Sign up',
@@ -56,14 +56,9 @@ const RegisterPage = () => {
               <span className={styles.line}></span>
             </div>
 
-            <Button
-              theme='tertiary'
-              size='md'
-              fullWidth
-              className={styles.authServices}
-            >
-              <AppIcon Icon={GoogleIcon} /> Continue with Google
-            </Button>
+            <div className={styles.authServices}>
+              <AuthByGoogleButton />
+            </div>
 
             <div className={styles.footer}>
               <p>Already have an account?</p>

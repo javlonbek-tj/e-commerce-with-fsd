@@ -2,9 +2,8 @@ import { Link } from 'react-router';
 import styles from './LoginPage.module.scss';
 import { LoginForm } from '@/features/login';
 
-import { AppIcon, Button } from '@/shared/ui';
 import { AppRoutes } from '@/shared/config';
-import GoogleIcon from '@/shared/assets/icons//Google.svg?react';
+import { AuthByGoogleButton } from '@/features/authByGoogle';
 
 const LoginPage = () => {
   return (
@@ -20,14 +19,9 @@ const LoginPage = () => {
             <span className={styles.line}></span>
           </div>
 
-          <Button
-            theme='tertiary'
-            size='md'
-            fullWidth
-            className={styles.authServices}
-          >
-            <AppIcon Icon={GoogleIcon} /> Continue with Google
-          </Button>
+          <div className={styles.authServices}>
+            <AuthByGoogleButton />
+          </div>
 
           <div className={styles.footer}>
             <p>Do not have an account?</p>

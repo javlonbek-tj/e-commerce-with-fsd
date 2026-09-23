@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { selectRegisterEmail } from '@/features/register/model/selectors/selectRegisterEmail/selectRegisterEmail';
 import { selectRegisterError } from '@/features/register/model/selectors/selectRegisterError/selectRegisterError';
 import { selectRegisterIsLoading } from '@/features/register/model/selectors/selectRegisterIsLoading/selectRegisterIsLoading';
@@ -13,6 +14,7 @@ import { useNavigate } from 'react-router';
 import { AppRoutes } from '@/shared/config';
 
 export const VerificationStep = () => {
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
   const email = useAppSelector(selectRegisterEmail);
   const phone = useAppSelector(selectRegisterPhone);
@@ -37,7 +39,8 @@ export const VerificationStep = () => {
     <div className={styles.wrapper}>
       <form className={styles.form}>
         <div className={styles.title}>
-          Verification code sent to <br /> <span>{email || phone}</span>
+          {t('register.verification.sentTo')} <br />{' '}
+          <span>{email || phone}</span>
         </div>
         <OTPInput
           disabled={isLoading}
@@ -52,7 +55,7 @@ export const VerificationStep = () => {
         )}
       </form>
       <div className={styles.resendCodeText}>
-        <span>Code not received?</span>
+        <span>{t('register.verification.codeNotReceived')}?</span>
         <Button
           onClick={handleResend}
           disabled={isLoading}
@@ -60,7 +63,7 @@ export const VerificationStep = () => {
           size='md'
           className={styles.resendButton}
         >
-          Resend
+          {t('register.verification.resend')}
         </Button>
       </div>
     </div>

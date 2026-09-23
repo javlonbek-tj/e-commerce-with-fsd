@@ -5,6 +5,7 @@ import { AppRoutes } from '@/shared/config';
 import { LoginPage } from '@/pages/Login';
 import { RegisterPage } from '@/pages/Register';
 import { NotFound } from '@/pages/NotFound';
+import { AuthCallbackPage } from '@/pages/AuthCallback';
 
 export const routeConfig: RouteProps[] = [
   {
@@ -20,6 +21,11 @@ export const routeConfig: RouteProps[] = [
   {
     path: AppRoutes.REGISTER,
     element: <RegisterPage />,
+  },
+
+  {
+    path: AppRoutes.AUTH_CALLBACK,
+    element: <AuthCallbackPage />,
   },
 
   {
